@@ -1,0 +1,149 @@
+.nav-link {
+  color: aliceblue;
+}
+
+.text-pink {
+  color: pink !important;
+}
+
+.slide {
+  width: 100%;
+  height: 40vh;
+  padding: 4px;
+
+}
+
+.product {
+  margin: 20px;
+  height: 25vh;
+  display: flex;
+  overflow-x: scroll;
+  flex-wrap: wrap;
+
+
+}
+
+.card-h {
+  height: 100px;
+
+}
+
+.card-main {
+  padding: 2px;
+  margin-left: 2vw;
+  width: 130px;
+}
+
+.card1 {
+  height: 1px;
+  max-height: 150px;
+  overflow-y: hidden;
+}
+
+.text-center {
+  max-width: max-content;
+  max-width: 20vh;
+
+
+}
+
+.mid {
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-margin {
+  margin: 1rem;
+}
+
+.bgimage {
+  height: 20rem;
+  padding: 2rem;
+
+}
+
+.footer {
+  background: rgb(20, 20, 20);
+  color: white;
+
+  .links {
+    ul {
+      list-style-type: none;
+    }
+
+    li a {
+      color: white;
+      transition: color .2s;
+
+      &:hover {
+        text-decoration: none;
+        color: #4180CB;
+      }
+    }
+  }
+
+  .about-company {
+    i {
+      font-size: 25px;
+    }
+
+    a {
+      color: white;
+      transition: color .2s;
+
+      &:hover {
+        color: #4180CB
+      }
+    }
+  }
+
+  .location {
+    i {
+      font-size: 18px;
+    }
+  }
+
+  .copyright p {
+    border-top: 1px solid rgba(255, 255, 255, .1);
+  }
+}
+
+/* for product detail */
+
+.des{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-detail {
+  
+  width: 45rem;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.product-image {
+  max-width: 100%;
+  height: auto;
+}
+.product-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.product-price {
+  font-size: 18px;
+  color: #e44d26; /* Flipkart's primary color */
+  margin-bottom: 10px;
+}
+.specifications {
+  margin-top: 20px;
+}
+.specification-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
