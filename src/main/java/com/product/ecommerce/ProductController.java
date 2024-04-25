@@ -6,9 +6,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 
 
@@ -26,6 +28,12 @@ public class ProductController {
 		return "monitor";
 	}
 	
+	@GetMapping("/add")
+	public String ading() {
+		
+		System.out.println("hello");
+		return "addProduct";
+	}
 	
 	
 	@Autowired
@@ -58,4 +66,13 @@ public class ProductController {
 	    }  
 	
 
+	  
+	  @PostMapping("/addp")  
+	    public String add(@RequestParam String name,@RequestParam String price, @RequestParam String desc, @RequestParam MultipartFile image){  
+		  
+		  System.out.println(name+price+desc);
+	        jdbc.execute("insert into product(name,prise,description,image)values('"+name+"','"+price+"','"+desc+"','"+ image+"')");  
+	        return"done";  
+	    }  
+	
 }

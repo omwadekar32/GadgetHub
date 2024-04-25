@@ -24,7 +24,11 @@
           <li class="nav-item">
             <a class="nav-link active " aria-current="page" href="#">Home</a>
           </li>
-          <!-- <li class="nav-item">
+          <li class="nav-item">
+            <a class="nav-link" href="/add">Add Product</a>
+          </li>
+          <!-- 
+          <li class="nav-item">
             <a class="nav-link" href="#">Cart</a>
           </li>
           <li class="nav-item dropdown">

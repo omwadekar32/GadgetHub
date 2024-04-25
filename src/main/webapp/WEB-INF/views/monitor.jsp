@@ -227,7 +227,7 @@
                         "key": "rzp_test_z2CyynhkXzIxry", // Enter the Key ID generated from the Dashboard
                         "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
                         "currency": "INR",
-                        "name": "Acme Corp",
+                        "name": "GadgetHub",
                         "description": "Test Transaction",
                         "image": "",
                         "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
