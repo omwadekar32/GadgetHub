@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -62,6 +63,19 @@ public class ApiController {
 	
 	
 	
+	
+	  @Autowired
+	  private ProductService pservice;
+	  
+	  @GetMapping("/pro")
+	  public List<Product> getProductall() {
+		  
+		  List<Product> p= pservice.getProduct();
+		 
+		  
+		  return p;
+		  
+	  }
 	
 	
 	}

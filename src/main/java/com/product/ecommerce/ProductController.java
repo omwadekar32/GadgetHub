@@ -1,16 +1,21 @@
 package com.product.ecommerce;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+
 
 
 
@@ -68,11 +73,19 @@ public class ProductController {
 
 	  
 	  @PostMapping("/addp")  
-	    public String add(@RequestParam String name,@RequestParam String price, @RequestParam String desc, @RequestParam MultipartFile image){  
+	    public String add(@RequestParam String name,@RequestParam int price, @RequestParam String desc, @RequestParam MultipartFile image){  
+		  
+		  pservice.saveProduct(name, price, desc, image);
+		  
 		  
 		  System.out.println(name+price+desc);
-	        jdbc.execute("insert into product(name,prise,description,image)values('"+name+"','"+price+"','"+desc+"','"+ image+"')");  
-	        return"done";  
+	     //   jdbc.execute("insert into product(name,prise,description,image)values('"+name+"','"+price+"','"+desc+"','"+ image+"')");  
+	        return"Plist";  
 	    }  
 	
+	  
+	  @Autowired
+	  private ProductService pservice;
+	  
+	 
 }

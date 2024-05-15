@@ -1,19 +1,26 @@
 package com.product.ecommerce;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 
+@Entity
 public class Product {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private double prise;
 	private String description;
 	
-	@Lob
-	private byte[] image;
+	
+	private String image;
 	
 	
-	public Product(int id, String name, double prise, String description, byte[] image) {
+	public Product(int id, String name, double prise, String description, String image) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -21,10 +28,10 @@ public class Product {
 		this.description = description;
 		this.image = image;
 	}
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 	public int getId() {

@@ -8,6 +8,50 @@
   <link rel="stylesheet" th:href="@{/style.css}">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+<style >
+	 .product-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+            display: inline-block;
+        }
+        .product-image {
+            width: 100%;
+            height: auto;
+        }
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .product-description {
+            margin-top: 5px;
+        }
+        .product-price {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 5px;
+            color:green;
+            
+        }
+        
+        .adjust{
+        
+        padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  
+        
+        }
+
+#product-container {
+margin-top: 100px;
+margin-left: 50px;
+}
+</style>
 </head>
 
 <body>
@@ -188,6 +232,20 @@
       </div>
     </div>
   </div>
+  
+  <div id="adjust">
+  <div id="product-container">
+        <!-- Product details will be dynamically added here -->
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
@@ -257,6 +315,55 @@
   document.addEventListener('DOMContentLoaded', function () {
   fetchData();
   });
+  
+  
+  const maxCards = 12;
+  let cardCount = 0;
+
+  // Fetch products from the backend
+  fetch('/api/pro')
+      .then(response => response.json())
+      .then(products => {
+          const productContainer = document.getElementById('product-container');
+          products.forEach(product => {
+              // Check if the maximum card limit has been reached
+              if (cardCount < maxCards) {
+                  const productCard = document.createElement('div');
+                  productCard.classList.add('product-card');
+
+                  const productImage = document.createElement('img');
+                  productImage.src = product.image;
+                  productImage.alt = product.name;
+                  productImage.classList.add('product-image');
+                  productCard.appendChild(productImage);
+
+                  const productName = document.createElement('div');
+                  productName.textContent = product.name;
+                  productName.classList.add('product-name');
+                  productCard.appendChild(productName);
+
+                  const productDescription = document.createElement('div');
+                  productDescription.textContent = product.description;
+                  productDescription.classList.add('product-description');
+                  productCard.appendChild(productDescription);
+
+                  const productPrice = document.createElement('div');
+                  productPrice.textContent = 'Rs: ' + product.prise;
+                  productPrice.classList.add('product-price');
+                  productCard.appendChild(productPrice);
+
+                  productContainer.appendChild(productCard);
+
+                  // Increment card count
+                  cardCount++;
+              } else {
+                  // Break out of the loop if the maximum card limit is reached
+                  return;
+              }
+          });
+      })
+      .catch(error => console.error('Error fetching products:', error));
+  
 </script>
 </body>
 </html>
